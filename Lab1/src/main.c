@@ -23,5 +23,6 @@ int main(void) {
 			change++;
 		}
 	}
+	system("pause");
 	return 0;
 }
