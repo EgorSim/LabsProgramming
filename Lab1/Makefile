@@ -1,3 +1,3 @@
 all:
-	gcc -std=c89 -o src/main toBin.h main.c toBin.c
-	src/main.exe
+	gcc -std=c89 -o main src/toBin.h src/main.c src/toBin.c
+	main.exe
