@@ -12,7 +12,7 @@ void basic(unsigned int m, FILE* file) {
 
 	int change = 0;
 	while (number <= m) {
-		fprintf(file, "%lu ", number);
+		fprintf(file, "%u ", number);
 		toBin(number, file);
 		fprintf(file, "\n");
 		if (number > 1073741824) break;
