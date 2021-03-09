@@ -1,4 +1,4 @@
-all: buildMain runMain buildTests runTests
+all: buildMain buildTests runTests
 
 
 buildMain:
