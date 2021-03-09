@@ -9,7 +9,7 @@ int main(void) {
 	if (correctInput == 1 && m <= 2147483647) {
 		int change = 0;
 		while (number <= m) {
-			printf("DEC: %11lu   ", number);
+			printf("DEC: %11u   ", number);
 			printf("BIN: ");
 			toBin(number);
 			printf("\n");
