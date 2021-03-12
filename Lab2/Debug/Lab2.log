@@ -1,3 +1,0 @@
-﻿  main.c
-D:\My Projects\C\LadsProgramming\Lab2\main.c(84,8): warning C4013: system: нет определения; предполагается "extern" с возвратом типа "int"
-  Lab2.vcxproj -> D:\My Projects\C\LadsProgramming\Lab2\Debug\Lab2.exe
