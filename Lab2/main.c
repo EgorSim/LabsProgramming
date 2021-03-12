@@ -26,7 +26,6 @@
 #define EARTH 3 
 #define AIR 4 
 
-
 struct People
 {
 	int date;
