@@ -1,6 +1,7 @@
 #pragma warning(disable : 4996)
 #include <stdio.h>
 #include <math.h>
+#include <corecrt_math.h>
 #include "series.h"
 
 
