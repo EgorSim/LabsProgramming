@@ -1,4 +1,4 @@
 all: buildMain1
 
 buildMain1:
-	gcc -std=c89 -o N1\main1 N1\src\main1.c
+	gcc -std=c89 -o ¹1/main1 ¹1/src/main1.c
