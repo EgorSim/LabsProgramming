@@ -10,4 +10,4 @@ runTest1:
 	N1/tests/main1Tests
 
 buildMain2:
-	gcc -std=c89 -o N2/main1 N2/src/main2.c
+	gcc -std=c89 -o N2/main2 N2/src/series.h N2/src/main2.c N2/src/series.c 
