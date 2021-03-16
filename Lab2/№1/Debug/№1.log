@@ -1,0 +1,3 @@
+﻿  main1.c
+D:\My Projects\C\LabsProgramming\Lab2\№1\src\main1.c(96,8): warning C4013: system: нет определения; предполагается "extern" с возвратом типа "int"
+  №1.vcxproj -> D:\My Projects\C\LabsProgramming\Lab2\Debug\№1.exe
