@@ -25,6 +25,5 @@ int main(void) {
 
 
 	printf("Tests complited successful\n");
-	system("pause");
 	return 0;
 }
