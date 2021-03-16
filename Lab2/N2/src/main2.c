@@ -24,11 +24,9 @@ int main(void)
 	double correctSin = sin(x);
 	double seriesSin = 0.0;
 	int n = 0;
-	double temp;
 	do {
 		seriesSin += series(x, ++n);
-		temp = fabs(correctSin - seriesSin);
-	} while (temp >= epsilon);
+	} while (fabs(correctSin - seriesSin) >= epsilon);
 
 	printf("n: %d\n", n);
 
