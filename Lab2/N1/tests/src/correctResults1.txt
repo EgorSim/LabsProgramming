@@ -1,0 +1,31 @@
+Actions:
+	Enter first people:         EF
+	Enter second people:        ES
+	Show moon sign:           ShMS
+	Is friendship possible:    IFP
+	Is business possible:      IBP
+	Is marriage possible:      IMP
+	Programm info             info
+	Press Enter to exit.
+Enter month(1 - 12): 
+Enter date: 
+Enter sex(1 - man, 0 - women): 
+TAURUS
+Set value before using ShMS
+Set values before using IBP
+Set values before using IFP
+Set values before using IMP
+Enter month(1 - 12): 
+Enter date: 
+Enter sex(1 - man, 0 - women): 
+TAURUS
+GEMINI
+Business is possible
+Friendship is not possible
+Marriage is not possible
+Enter month(1 - 12): 
+Incorrect input!
+Enter date: 
+Incorrect input!
+Enter sex(1 - man, 0 - women): 
+Incorrect input!
