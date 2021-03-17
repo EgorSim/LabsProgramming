@@ -11,6 +11,12 @@ int main(void) {
 	FILE* fileInput = fopen("input1.txt", "r");
 
 	/* Begin of testing functions----------------------------------*/
+	assert(fileAnswers != NULL);
+	assert(fileResult != NULL);
+	assert(fileInput != NULL);
+
+
+
 	struct People firstPeople = { 0, 0, 0 };
 	struct People secondtPeople = { 0, 0, 0 };
 
