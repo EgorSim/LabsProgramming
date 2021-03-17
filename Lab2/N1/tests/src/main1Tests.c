@@ -53,7 +53,5 @@ int main(void) {
 		assert(ch1 == ch2);
 	}
 
-
-	printf("Tests complited successful\n");
 	return 0;
 }

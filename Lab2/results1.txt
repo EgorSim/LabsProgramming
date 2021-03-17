@@ -10,12 +10,14 @@ Actions:
 Enter month(1 - 12): 
 Enter date: 
 Enter sex(1 - man, 0 - women): 
+Incorrect input!
 TAURUS
 Set value before using ShMS
 Set values before using IBP
 Set values before using IFP
 Set values before using IMP
 Enter month(1 - 12): 
+Incorrect input!
 Enter date: 
 Enter sex(1 - man, 0 - women): 
 TAURUS
