@@ -1,0 +1,12 @@
+Enter x: 
+
+Incorrect input!
+Enter x: 
+Enter epsilon: 
+
+Incorrect input!
+Enter epsilon: 
+
+Incorrect input!
+Enter epsilon: 
+n: 20
