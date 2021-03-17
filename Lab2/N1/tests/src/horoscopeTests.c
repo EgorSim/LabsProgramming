@@ -20,19 +20,16 @@ void setVars(int* date, int* month, int* sex, FILE* fileI, FILE* fileO) {
 	int x;
 	do {
 		x = fscanf(fileI, "%d", month);
-		if (!x) while(getc(fileI) != '\n');
 		if (!x || *month < 1 || *month > 12) fprintf(fileO, "Incorrect input!\n");
 	} while (!x || *month < 1 || *month > 12);
 	fprintf(fileO, "Enter date: \n");
 	do {
 		x = fscanf(fileI, "%d", date);
-		if (!x) while (getc(fileI) != '\n');
 		if (!x || (*month == 2 && *date > 29) || *date < 1 || *date > 31) fprintf(fileO, "Incorrect input!\n");
 	} while (!x || (*month == 2 && *date > 29) || *date < 1 || *date > 31);
 	fprintf(fileO, "Enter sex(1 - man, 0 - women): \n");
 	do {
 		x = fscanf(fileI, "%d", sex);
-		if (!x) while (getc(fileI) != '\n');
 		if (!x || !((*sex == 0 && *sex != 1) || (*sex != 0 && *sex == 1))) fprintf(fileO, "Incorrect input!\n");
 	} while (!((*sex == 0 && *sex != 1) || (*sex != 0 && *sex == 1)));
 }
