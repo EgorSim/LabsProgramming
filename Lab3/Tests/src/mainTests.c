@@ -1,4 +1,4 @@
-﻿#pragma warning(disable : 4996)
+﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <malloc.h>
 #include <assert.h>
@@ -9,6 +9,9 @@ int main(void) {
 	FILE* fileAnswers = fopen("correctResults.txt", "r");
 	FILE* fileResult = fopen("results.txt", "w");
 	FILE* fileInput = fopen("input.txt", "r");
+	assert(fileAnswers != NULL);
+	assert(fileResult != NULL);
+	assert(fileInput != NULL);
 
 	/* Begin of testing functions----------------------------------*/
 	int*** array3d;
@@ -78,6 +81,8 @@ int main(void) {
 
 	fclose(fileResult);
 	fileResult = fopen("results.txt", "r");
+	assert(fileResult != NULL);
+
 
 
 	while (!feof(fileResult)) {
