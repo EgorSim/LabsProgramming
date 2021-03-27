@@ -1,10 +1,26 @@
+#pragma warning(disable : 4996)
 #include <stdio.h>
+#include <malloc.h>
 #include <stdlib.h>
-#include "vector.h"
+#include <ctype.h>
+#include <assert.h>
+#include "../../Main2/src/vector.h"
 
 
-int main(void)
-{
+int main(void) {
+	/*FILE* fileAnswers = fopen("correctResults.txt", "r");
+	FILE* fileResult = fopen("results.txt", "w");
+	FILE* fileInput = fopen("input.txt", "r");*/
+	FILE* fileAnswers = fopen("N2/Tests2/src/correctResults.txt", "r");
+	FILE* fileResult = fopen("N2/Tests2/src/results.txt", "w");
+	FILE* fileInput = fopen("N2/Tests2/src/input.txt", "r");
+
+	assert(fileAnswers != NULL);
+	assert(fileResult != NULL);
+	assert(fileInput != NULL);
+
+	/* Begin of testing functions----------------------------------*/
+	
 	struct vectorC vec = { NULL, 1, 0 };
 	vec.array = (char*)malloc(1 * sizeof(char));
 	if (!vec.array) {
@@ -14,13 +30,10 @@ int main(void)
 	vec.array[vec.capacity - 1] = '\0';
 	char current;
 	do {
-		current = getc(stdin);
+		current = getc(fileInput);
 		push_back(&vec, current);
-	} while (current != '\n');
+	} while (!feof(fileInput));
 	vec.array[vec.size - 1] = '\0';
-
-	printf(vec.array);
-
 
 	int i, max, currentLength;
 	max = currentLength = 0;
@@ -48,7 +61,7 @@ int main(void)
 				currentLength--;
 			}
 		}
-		printf(vec.array);
+		fprintf(fileResult, vec.array);
 	}
 	else {
 		fprintf(stderr, "Brackets sequence is incorrect!");
@@ -56,8 +69,17 @@ int main(void)
 	}
 
 
+	/* End of testing functions-------------------------------------*/
 
+	fclose(fileResult);
+	fileResult = fopen("N2/Tests2/src/results.txt", "r");
+	assert(fileResult != NULL);
 
-	getc(stdin);
+	while (!feof(fileResult)) {
+		char ch1 = getc(fileAnswers);
+		char ch2 = getc(fileResult);
+		assert(ch1 == ch2);
+	}
+
 	return 0;
 }
