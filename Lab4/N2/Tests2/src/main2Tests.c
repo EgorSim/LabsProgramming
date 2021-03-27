@@ -8,9 +8,6 @@
 
 
 int main(void) {
-	/*FILE* fileAnswers = fopen("correctResults.txt", "r");
-	FILE* fileResult = fopen("results.txt", "w");
-	FILE* fileInput = fopen("input.txt", "r");*/
 	FILE* fileAnswers = fopen("N2/Tests2/src/correctResults.txt", "r");
 	FILE* fileResult = fopen("N2/Tests2/src/results.txt", "w");
 	FILE* fileInput = fopen("N2/Tests2/src/input.txt", "r");
