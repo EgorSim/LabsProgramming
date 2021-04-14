@@ -4,16 +4,18 @@
 #include "vector.h"
 
 int resize(struct vectorC* vec, size_t cap) {
-	char* temp = vec->array;
-	vec->array = (char*)malloc(cap * sizeof(char));
-	if (!vec->array) exit(1);
-	vec->array = (char*)memcpy(vec->array, temp, sizeof(char) * vec->size);
+	char* temp = realloc(vec->array, cap * sizeof(char));
+	if (temp) return 1;
+	free(vec->array);
+	vec->array = temp;
 	vec->capacity = cap;
 	vec->array[vec->capacity - 1] = '\0';
-	free(temp);
+	return 0;
 }
 
 void push_back(struct vectorC* vec, char ch) {
-	if (vec->size == vec->capacity - 1) resize(vec, (size_t)((vec->capacity + 1) * 1.5));
+	if (vec->size == vec->capacity - 1) {
+		if (resize(vec, (size_t)((vec->capacity + 1) * 1.5)) == 1) return;
+	}
 	vec->array[vec->size++] = ch;
 }
