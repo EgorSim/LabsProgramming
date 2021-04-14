@@ -4,9 +4,8 @@
 #include "vector.h"
 
 int resize(struct vectorC* vec, size_t cap) {
-	char* temp = realloc(vec->array, cap * sizeof(char));
-	if (temp) return 1;
-	free(vec->array);
+	char* temp = (char*)realloc(vec->array, cap * sizeof(char));
+	if (!temp) return 1;
 	vec->array = temp;
 	vec->capacity = cap;
 	vec->array[vec->capacity - 1] = '\0';

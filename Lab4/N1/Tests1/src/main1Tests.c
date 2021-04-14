@@ -9,10 +9,11 @@
 
 int main(void) {
 	FILE* fileAnswers = fopen("N1/Tests1/src/correctResults.txt", "r");
-	assert(fileAnswers != NULL);
 	FILE* fileResult = fopen("N1/Tests1/src/results.txt", "w");
-	assert(fileResult != NULL);
 	FILE* fileInput = fopen("N1/Tests1/src/input.txt", "r");
+
+	assert(fileAnswers != NULL);
+	assert(fileResult != NULL);
 	assert(fileInput != NULL);
 
 	/* Begin of testing functions----------------------------------*/
