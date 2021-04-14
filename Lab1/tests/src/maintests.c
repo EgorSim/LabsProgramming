@@ -16,7 +16,6 @@ int main(void) {
 	fclose(fileResult);
 	fileResult = fopen("results.txt", "r");
 
-
 	while (!feof(fileResult)) {
 		char ch1 = getc(fileAnswers);
 		char ch2 = getc(fileResult);
