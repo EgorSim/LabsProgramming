@@ -15,7 +15,11 @@ int main() {
 		tr.insert(temp);
 	}
 
-	tr.checkAllNodesBF();
+
+	tr.prinfTree();
+
+
+	//tr.checkAllNodesBF();
 
 	return 0;
 }

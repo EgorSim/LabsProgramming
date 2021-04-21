@@ -76,6 +76,14 @@ private:
 		_checkAllNodesBF(obj->right);
 	}
 
+	void _printTree(Node* n, int x) {
+		if (n) {
+			_printTree(n->left, x + 1);
+			for (size_t i = 0; i < x; ++i) std::cout << " ";
+			std::cout << n->key << std::endl;
+			_printTree(n->right, x + 1);
+		}
+	}
 public:
 	AVLTree() : root(nullptr) {}
 
@@ -86,6 +94,10 @@ public:
 
 	void checkAllNodesBF() {
 		_checkAllNodesBF(root);
+	}
+
+	void prinfTree() {
+		_printTree(root, 0);
 	}
 
 };
