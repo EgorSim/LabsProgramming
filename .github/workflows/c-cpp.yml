@@ -20,3 +20,9 @@ jobs:
         make
         cd ..
         done
+    - name: Unpload
+      uses: codecov/codecov-action@v1
+      with:
+        files: |
+          ./lab7/MarriageAgency.cpp.gcov
+          ./lab7/People.cpp.gcov
