@@ -22,6 +22,7 @@ People::People(std::string name,
 	std::string sity) :
 	name(name), 
 	secondName(secondName),
+	number(number),
 	sex(sex),
 	height(height), 
 	weight(weight),
