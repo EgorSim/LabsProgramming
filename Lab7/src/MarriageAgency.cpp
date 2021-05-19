@@ -59,14 +59,14 @@ bool MarriageAgency::checkSimilarity(const People& m, const People& w) {
 size_t MarriageAgency::indexByNumber(uint16_t num, Sex sex) {
 	size_t i{ 0 };
 	if (sex == Sex::Man) {
-		for (auto& obj : men) {
-			if (obj.number == num) break;
+		for (auto obj : men) {
+			if (obj->number == num) break;
 			++i;
 		}
 	}
 	else {
-		for (auto& obj : women) {
-			if (obj.number == num) break;
+		for (auto obj : women) {
+			if (obj->number == num) break;
 			++i;
 		}
 	}
@@ -75,17 +75,17 @@ size_t MarriageAgency::indexByNumber(uint16_t num, Sex sex) {
 
 MarriageAgency::MarriageAgency() {}
 
-void MarriageAgency::addPeople(const People& people) {
-	if (people.sex == Sex::Man) men.push_back(people);
-	else women.push_back(people);
+void MarriageAgency::addPeople(People& people) {
+	if (people.sex == Sex::Man) men.push_back(&people);
+	else women.push_back(&people);
 }
 
 std::vector<std::pair<People&, People&>> MarriageAgency::showPossiblePairs() {
 	std::vector<std::pair<People&, People&>> vec{};
-	for (auto& m : men) {
-		for (auto& w : women) {
-			if (checkSimilarity(m, w)) {
-				std::pair<People&, People&> tempPair{ m, w };
+	for (auto m : men) {
+		for (auto w : women) {
+			if (checkSimilarity(*m, *w)) {
+				std::pair<People&, People&> tempPair{ *m, *w };
 				showPair(tempPair);
 				vec.push_back(tempPair);
 			}
@@ -107,7 +107,7 @@ int MarriageAgency::makePair(uint16_t mansNumber, uint16_t womansNumber) {
 		return -1;
 	}
 
-	archive.push_back(std::pair<People&, People&>{men[i], women[j]});
+	archive.push_back(std::pair<People&, People&>{*men[i], *women[j]});
 	men.erase(men.begin() + i);
 	women.erase(women.begin() + j);
 	return 0;
