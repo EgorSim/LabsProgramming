@@ -28,17 +28,22 @@ int main() {
 	first.addRequiredHobbies(Hobby::Cooking);
 
 	assert(checkSimilatity(agency.showPossiblePairs(),
-		std::vector<std::pair<People&, People&>>{}) == -1);
+		std::vector<std::pair<People&, People&>>{}) == 0);
 
 	second.addHobbies(Hobby::Cooking);
+
+	assert(checkSimilatity(agency.showPossiblePairs(),
+		std::vector<std::pair<People&, People&>>{std::pair<People&, People&>{first, second}}) == 0);
 
 	second.addRequiredHobbies(Hobby::Drowing);
 
 	assert(checkSimilatity(agency.showPossiblePairs(),
-		std::vector<std::pair<People&, People&>>{}) == -1);
+		std::vector<std::pair<People&, People&>>{}) == 0);
 
 	first.addHobbies(Hobby::Drowing);
 
+	assert(checkSimilatity(agency.showPossiblePairs(),
+		std::vector<std::pair<People&, People&>>{std::pair<People&, People&>{first, second}}) == 0);
 
 	//second.addHobbies(Hobby::Cooking);
 
