@@ -20,8 +20,17 @@ jobs:
         make
         cd ..
         done
+<<<<<<< HEAD
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
         files: |
           
+=======
+    - name: Unpload
+      uses: codecov/codecov-action@v1
+      with:
+        files: |
+          ./lab7/MarriageAgency.cpp.gcov
+          ./lab7/People.cpp.gcov
+>>>>>>> 47c6e7d31d275d59ddfc2dbe8a12a4f36da3fe96
