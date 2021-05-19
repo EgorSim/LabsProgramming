@@ -17,7 +17,7 @@ public:
 	
 	void addPeople(const People& people);
 	std::vector<std::pair<People&, People&>> showPossiblePairs();
-	void makePair(uint16_t firstNumber, uint16_t secondNumber);
+	int makePair(uint16_t firstNumber, uint16_t secondNumber);
 	void deletePeople(uint16_t number, Sex sex);
 };
 

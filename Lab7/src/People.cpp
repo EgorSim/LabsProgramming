@@ -29,8 +29,9 @@ People::People(std::string name,
 	setBirthday(day, month, year);
 }
 
-void People::setInformation(std::string info) {
+std::string People::setInformation(std::string info) {
 	information = info;
+	return this->information;
 }
 
 void People::addHobbies(Hobby hobby) {

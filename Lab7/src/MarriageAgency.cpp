@@ -94,7 +94,7 @@ std::vector<std::pair<People&, People&>> MarriageAgency::showPossiblePairs() {
 	return vec;
 }
 
-void MarriageAgency::makePair(uint16_t mansNumber, uint16_t womansNumber) {
+int MarriageAgency::makePair(uint16_t mansNumber, uint16_t womansNumber) {
 	size_t i{ 0 };
 	size_t j{ 0 };
 
@@ -104,11 +104,13 @@ void MarriageAgency::makePair(uint16_t mansNumber, uint16_t womansNumber) {
 	}
 	catch (std::string str) {
 		std::cout << str;
+		return -1;
 	}
 
 	archive.push_back(std::pair<People&, People&>{men[i], women[j]});
 	men.erase(men.begin() + i);
 	women.erase(women.begin() + j);
+	return 0;
 }
 
 void MarriageAgency::deletePeople(uint16_t number, Sex sex) {

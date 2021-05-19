@@ -121,10 +121,6 @@ People createPeople() {
 	std::cin >> sity;
 
 	People tempPeople{ name, secondName, number, sex, day, month, year, height, weight, sity };
-	//std::string info;
-	//std::cout << "Enter info: ";
-	//std::getline(std::cin, info);
-	//tempPeople.setInformation(info);
 
 	Hobby tempHobby;
 	std::vector<Hobby> tempHobbyVector{};

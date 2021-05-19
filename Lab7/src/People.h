@@ -58,7 +58,7 @@ public:
 		int weight,
 		std::string sity);
 
-	void setInformation(std::string info);
+	std::string setInformation(std::string info);
 	void addHobbies(Hobby hobby);
 	void addBadHobbies(BadHabbits badHabbit);
 	void addRequiredHobbies(Hobby hobby);
