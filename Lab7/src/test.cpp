@@ -22,7 +22,8 @@ int main() {
 	agency.addPeople(first);
 	agency.addPeople(second);
 
-	assert(checkSimilatity(agency.showPossiblePairs(), std::vector<std::pair<People&, People&>>{std::pair<People&, People&>{first, second} == 0);
+	assert(checkSimilatity(agency.showPossiblePairs(), 
+		std::vector<std::pair<People&, People&>>{std::pair<People&, People&>{first, second}}) == 0);
 
 	return 0;
 }
