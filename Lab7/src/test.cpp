@@ -25,5 +25,25 @@ int main() {
 	assert(checkSimilatity(agency.showPossiblePairs(), 
 		std::vector<std::pair<People&, People&>>{std::pair<People&, People&>{first, second}}) == 0);
 
+	first.addRequiredHobbies(Hobby::Cooking);
+
+	assert(checkSimilatity(agency.showPossiblePairs(),
+		std::vector<std::pair<People&, People&>>{}) == -1);
+
+	second.addHobbies(Hobby::Cooking);
+
+	second.addRequiredHobbies(Hobby::Drowing);
+
+	assert(checkSimilatity(agency.showPossiblePairs(),
+		std::vector<std::pair<People&, People&>>{}) == -1);
+
+	first.addHobbies(Hobby::Drowing);
+
+
+	//second.addHobbies(Hobby::Cooking);
+
+	//first.addBadHobbies(BadHabbits::Drinking);
+
+
 	return 0;
 }
