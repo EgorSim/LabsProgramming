@@ -1,20 +1,20 @@
 #include "MarriageAgency.h"
 #include <iostream>
 
-void MarriageAgency::showPair(std::pair<People&, People&> pair) {
+void MarriageAgency::showPair(std::pair<People*, People*> pair) {
 	std::cout << "===============PAIR===============" << std::endl;
 	std::cout.setf(std::ios::left);
 	std::cout.width(25);
 	std::cout << "Man:" << "Woman:" << std::endl;
 	std::cout.width(25);
-	std::cout << ("Name: " + pair.first.name);
-	std::cout << ("Name: " + pair.second.name) << std::endl;
+	std::cout << ("Name: " + pair.first->name);
+	std::cout << ("Name: " + pair.second->name) << std::endl;
 	std::cout.width(25);
-	std::cout << ("Second Name: " + pair.first.secondName);
-	std::cout << ("Second Name: " + pair.second.secondName) << std::endl;
+	std::cout << ("Second Name: " + pair.first->secondName);
+	std::cout << ("Second Name: " + pair.second->secondName) << std::endl;
 	std::cout.width(25);
-	std::cout << ("Sity: " + pair.first.sity);
-	std::cout << ("Sity: " + pair.second.sity);
+	std::cout << ("Sity: " + pair.first->sity);
+	std::cout << ("Sity: " + pair.second->sity);
 	std::cout << std::endl;
 }
 
@@ -75,17 +75,17 @@ size_t MarriageAgency::indexByNumber(uint16_t num, Sex sex) {
 
 MarriageAgency::MarriageAgency() {}
 
-void MarriageAgency::addPeople(People& people) {
-	if (people.sex == Sex::Man) men.push_back(&people);
-	else women.push_back(&people);
+void MarriageAgency::addPeople(People* people) {
+	if (people->sex == Sex::Man) men.push_back(people);
+	else women.push_back(people);
 }
 
-std::vector<std::pair<People&, People&>> MarriageAgency::showPossiblePairs() {
-	std::vector<std::pair<People&, People&>> vec{};
+std::vector<std::pair<People*, People*>> MarriageAgency::showPossiblePairs() {
+	std::vector<std::pair<People*, People*>> vec{};
 	for (auto m : men) {
 		for (auto w : women) {
 			if (checkSimilarity(*m, *w)) {
-				std::pair<People&, People&> tempPair{ *m, *w };
+				std::pair<People*, People*> tempPair{ m, w };
 				showPair(tempPair);
 				vec.push_back(tempPair);
 			}
@@ -107,7 +107,7 @@ int MarriageAgency::makePair(uint16_t mansNumber, uint16_t womansNumber) {
 		return -1;
 	}
 
-	archive.push_back(std::pair<People&, People&>{*men[i], *women[j]});
+	archive.push_back(std::pair<People*, People*>{men[i], women[j]});
 	men.erase(men.begin() + i);
 	women.erase(women.begin() + j);
 	return 0;

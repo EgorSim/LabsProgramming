@@ -3,7 +3,7 @@
 #include "MarriageAgency.h"
 
 void addPerson(MarriageAgency& agency);
-People createPeople();
+People* createPeople();
 
 int main() {
 	MarriageAgency agency{};
@@ -51,7 +51,7 @@ void addPerson(MarriageAgency& agency) {
 	agency.addPeople(createPeople());
 }
 
-People createPeople() {
+People* createPeople() {
 	std::string name{};
 	std::cout << "Enter name: ";
 	std::cin >> name;
@@ -120,7 +120,7 @@ People createPeople() {
 	std::cout << "Enter sity: ";
 	std::cin >> sity;
 
-	People tempPeople{ name, secondName, number, sex, day, month, year, height, weight, sity };
+	People* tempPeople = new People{ name, secondName, number, sex, day, month, year, height, weight, sity };
 
 	Hobby tempHobby;
 	std::vector<Hobby> tempHobbyVector{};
@@ -139,7 +139,7 @@ People createPeople() {
 	}
 
 	for (const auto& obj : tempHobbyVector) {
-		tempPeople.addHobbies(obj);
+		tempPeople->addHobbies(obj);
 	}
 	tempHobbyVector.clear();
 
@@ -158,7 +158,7 @@ People createPeople() {
 	}
 
 	for (const auto& obj : tempHobbyVector) {
-		tempPeople.addRequiredHobbies(obj);
+		tempPeople->addRequiredHobbies(obj);
 	}
 
 	BadHabbits tempBadHabbit;
@@ -176,7 +176,7 @@ People createPeople() {
 	}
 
 	for (const auto& obj : tempBadHabbitsVec) {
-		tempPeople.addBadHobbies(obj);
+		tempPeople->addBadHobbies(obj);
 	}
 	tempBadHabbitsVec.clear();
 
@@ -192,7 +192,7 @@ People createPeople() {
 	}
 
 	for (const auto& obj : tempBadHabbitsVec) {
-		tempPeople.addRequiredBadHobbies(obj);
+		tempPeople->addRequiredBadHobbies(obj);
 	}
 
 	return tempPeople;
