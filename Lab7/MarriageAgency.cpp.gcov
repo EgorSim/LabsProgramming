@@ -1,0 +1,123 @@
+        -:    0:Source:src/MarriageAgency.cpp
+        -:    0:Graph:MarriageAgency.gcno
+        -:    0:Data:MarriageAgency.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "MarriageAgency.h"
+        -:    2:#include <iostream>
+        -:    3:
+    #####:    4:void MarriageAgency::showPair(std::pair<People&, People&> pair) {
+    #####:    5:	std::cout << "===============PAIR===============" << std::endl;
+    #####:    6:	std::cout.setf(std::ios::left);
+    #####:    7:	std::cout.width(25);
+    #####:    8:	std::cout << "Man:" << "Woman:" << std::endl;
+    #####:    9:	std::cout.width(25);
+    #####:   10:	std::cout << ("Name: " + pair.first.name);
+    #####:   11:	std::cout << ("Name: " + pair.second.name) << std::endl;
+    #####:   12:	std::cout.width(25);
+    #####:   13:	std::cout << ("Second Name: " + pair.first.secondName);
+    #####:   14:	std::cout << ("Second Name: " + pair.second.secondName) << std::endl;
+    #####:   15:	std::cout.width(25);
+    #####:   16:	std::cout << ("Sity: " + pair.first.sity);
+    #####:   17:	std::cout << ("Sity: " + pair.second.sity);
+    #####:   18:	std::cout << std::endl;
+    #####:   19:}
+        -:   20:
+    #####:   21:bool MarriageAgency::checkSimilarity(const People& m, const People& w) {
+    #####:   22:	bool flag{ false };
+    #####:   23:	for (auto& i : m.requiredHobbies) {
+    #####:   24:		for (auto& j : w.hobbies) {
+    #####:   25:			if (i == j) {
+    #####:   26:				flag = true;
+    #####:   27:				break;
+        -:   28:			}
+        -:   29:		}
+    #####:   30:		if (!flag) return false;
+        -:   31:	}
+        -:   32:
+    #####:   33:	for (auto& i : m.requiredBadHabbits) {
+    #####:   34:		for (auto& j : w.badHabbits) {
+    #####:   35:			if (i == j) return false;
+        -:   36:		}
+        -:   37:	}
+        -:   38:
+    #####:   39:	flag = false;
+    #####:   40:	for (auto& i : w.requiredHobbies) {
+    #####:   41:		for (auto& j : m.hobbies) {
+    #####:   42:			if (i == j) {
+    #####:   43:				flag = true;
+    #####:   44:				break;
+        -:   45:			}
+        -:   46:		}
+    #####:   47:		if (!flag) return false;
+        -:   48:	}
+        -:   49:
+    #####:   50:	for (auto& i : w.requiredBadHabbits) {
+    #####:   51:		for (auto& j : m.badHabbits) {
+    #####:   52:			if (i == j) return false;
+        -:   53:		}
+        -:   54:	}
+        -:   55:
+    #####:   56:	return true;
+        -:   57:}
+        -:   58:
+    #####:   59:size_t MarriageAgency::indexByNumber(uint16_t num, Sex sex) {
+    #####:   60:	size_t i{ 0 };
+    #####:   61:	if (sex == Sex::Man) {
+    #####:   62:		for (auto& obj : men) {
+    #####:   63:			if (obj.number == num) break;
+    #####:   64:			++i;
+        -:   65:		}
+        -:   66:	}
+        -:   67:	else {
+    #####:   68:		for (auto& obj : women) {
+    #####:   69:			if (obj.number == num) break;
+    #####:   70:			++i;
+        -:   71:		}
+        -:   72:	}
+    #####:   73:	return i;
+        -:   74:}
+        -:   75:
+    #####:   76:MarriageAgency::MarriageAgency() {}
+        -:   77:
+    #####:   78:void MarriageAgency::addPeople(const People& people) {
+    #####:   79:	if (people.sex == Sex::Man) men.push_back(people);
+    #####:   80:	else women.push_back(people);
+    #####:   81:}
+        -:   82:
+    #####:   83:std::vector<std::pair<People&, People&>> MarriageAgency::showPossiblePairs() {
+    #####:   84:	std::vector<std::pair<People&, People&>> vec{};
+    #####:   85:	for (auto& m : men) {
+    #####:   86:		for (auto& w : women) {
+    #####:   87:			if (checkSimilarity(m, w)) {
+    #####:   88:				std::pair<People&, People&> tempPair{ m, w };
+    #####:   89:				showPair(tempPair);
+    #####:   90:				vec.push_back(tempPair);
+        -:   91:			}
+        -:   92:		}
+        -:   93:	}
+    #####:   94:	return vec;
+        -:   95:}
+        -:   96:
+    #####:   97:void MarriageAgency::makePair(uint16_t mansNumber, uint16_t womansNumber) {
+    #####:   98:	size_t i{ 0 };
+    #####:   99:	size_t j{ 0 };
+        -:  100:
+        -:  101:	try {
+    #####:  102:		i = indexByNumber(mansNumber, Sex::Man);
+    #####:  103:		j = indexByNumber(womansNumber, Sex::Woman);
+        -:  104:	}
+        -:  105:	catch (std::string str) {
+        -:  106:		std::cout << str;
+        -:  107:	}
+        -:  108:
+    #####:  109:	archive.push_back(std::pair<People&, People&>{men[i], women[j]});
+    #####:  110:	men.erase(men.begin() + i);
+    #####:  111:	women.erase(women.begin() + j);
+    #####:  112:}
+        -:  113:
+    #####:  114:void MarriageAgency::deletePeople(uint16_t number, Sex sex) {
+    #####:  115:	size_t i{ indexByNumber(number, sex) };
+    #####:  116:	if (sex == Sex::Man) men.erase(men.begin() + i);
+    #####:  117:	else 	women.erase(women.begin() + i);
+    #####:  118:}

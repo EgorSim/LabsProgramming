@@ -28,18 +28,18 @@ enum class BadHabbits {
 class People
 {
 private:
-	void setBirthday(uint8_t day, uint8_t month, uint8_t year);
+	void setBirthday(int day, int month, int year);
 
 public:
 	std::string name;
 	std::string secondName;
 	uint16_t number;
 	Sex sex;
-	uint8_t day;
-	uint8_t month;
-	uint16_t year;
-	uint8_t height;
-	uint8_t weight;
+	int day;
+	int month;
+	int year;
+	int height;
+	int weight;
 	std::string sity;
 	std::string information;
 	std::vector<Hobby> hobbies;
@@ -51,18 +51,18 @@ public:
 		std::string secondName,
 		uint16_t number,
 		Sex sex,
-		uint8_t day,
-		uint8_t month,
-		uint16_t year,
-		uint8_t height,
-		uint8_t weight,
+		int day,
+		int month,
+		int year,
+		int height,
+		int weight,
 		std::string sity);
 
 	void setInformation(std::string info);
-	void setHobbies(uint8_t count, ...);
-	void setBadHobbies(uint8_t count, ...);
-	void setRequiredHobbies(uint8_t count, ...);
-	void setRequiredBadHobbies(uint8_t count, ...);
+	void addHobbies(Hobby hobby);
+	void addBadHobbies(BadHabbits badHabbit);
+	void addRequiredHobbies(Hobby hobby);
+	void addRequiredBadHobbies(BadHabbits badHabbit);
 
 	bool operator==(const People& obj);
 };

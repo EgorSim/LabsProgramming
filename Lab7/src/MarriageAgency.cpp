@@ -56,35 +56,63 @@ bool MarriageAgency::checkSimilarity(const People& m, const People& w) {
 	return true;
 }
 
+size_t MarriageAgency::indexByNumber(uint16_t num, Sex sex) {
+	size_t i{ 0 };
+	if (sex == Sex::Man) {
+		for (auto& obj : men) {
+			if (obj.number == num) break;
+			++i;
+		}
+	}
+	else {
+		for (auto& obj : women) {
+			if (obj.number == num) break;
+			++i;
+		}
+	}
+	return i;
+}
+
 MarriageAgency::MarriageAgency() {}
 
-void MarriageAgency::addPeople(People& people) {
+void MarriageAgency::addPeople(const People& people) {
 	if (people.sex == Sex::Man) men.push_back(people);
 	else women.push_back(people);
 }
 
-void MarriageAgency::showPossiblePairs() {
+std::vector<std::pair<People&, People&>> MarriageAgency::showPossiblePairs() {
+	std::vector<std::pair<People&, People&>> vec{};
 	for (auto& m : men) {
 		for (auto& w : women) {
-			if (checkSimilarity(m, w)) showPair(std::pair<People&, People&>{m, w});
+			if (checkSimilarity(m, w)) {
+				std::pair<People&, People&> tempPair{ m, w };
+				showPair(tempPair);
+				vec.push_back(tempPair);
+			}
 		}
 	}
+	return vec;
 }
 
 void MarriageAgency::makePair(uint16_t mansNumber, uint16_t womansNumber) {
-	int i{ 0 }, j{ 0 };
-	for (auto& obj : men) {
-		if (obj.number == mansNumber) break;
-		++i;
-		if (obj == *--men.end()) throw "Mans number not found";
+	size_t i{ 0 };
+	size_t j{ 0 };
+
+	try {
+		i = indexByNumber(mansNumber, Sex::Man);
+		j = indexByNumber(womansNumber, Sex::Woman);
 	}
-	for (auto& obj : women) {
-		if (obj.number == womansNumber) break;
-		++j;
-		if (obj == *--women.end()) throw "Womans number not found";
+	catch (std::string str) {
+		std::cout << str;
 	}
 
 	archive.push_back(std::pair<People&, People&>{men[i], women[j]});
 	men.erase(men.begin() + i);
 	women.erase(women.begin() + j);
+}
+
+void MarriageAgency::deletePeople(uint16_t number, Sex sex) {
+	size_t i{ indexByNumber(number, sex) };
+	if (sex == Sex::Man) men.erase(men.begin() + i);
+	else 	women.erase(women.begin() + i);
 }
